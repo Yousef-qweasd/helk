@@ -1,9 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Personal Portfolio of Eyad Hossam Hosny">
+
   <title>Eyad Hossam Hosny | Personal Website</title>
 
   <style>
@@ -14,19 +17,21 @@
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b1120;
-      color: #f1f5f9;
-      line-height: 1.8;
-    }
-
     :root {
       --main: #38bdf8;
       --dark: #0b1120;
       --card: #162238;
       --muted: #a8b4c7;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--dark);
+      color: #f1f5f9;
+      line-height: 1.8;
+    }
+
+    /* Header */
 
     header {
       position: sticky;
@@ -61,16 +66,32 @@
       color: var(--main);
     }
 
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* Home */
+
     .hero {
       min-height: 85vh;
       padding: 90px 8%;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+
       background:
         radial-gradient(circle at 15% 30%, #12385a 0, transparent 40%),
         var(--dark);
+    }
+
+    .hero-content {
+      flex: 1;
     }
 
     .hero small {
@@ -93,6 +114,18 @@
       font-size: 18px;
     }
 
+    .hero-image {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--main);
+      box-shadow: 0 0 30px rgba(56,189,248,.3);
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+
     .btn {
       display: inline-block;
       background: var(--main);
@@ -110,6 +143,8 @@
       background: #7dd3fc;
     }
 
+    /* Sections */
+
     section {
       padding: 75px 8%;
     }
@@ -124,6 +159,8 @@
       color: var(--main);
     }
 
+    /* About */
+
     .about {
       text-align: center;
       max-width: 800px;
@@ -132,7 +169,10 @@
       font-size: 18px;
     }
 
-    .skills, .projects {
+    /* Skills & Projects */
+
+    .skills,
+    .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 22px;
@@ -160,14 +200,29 @@
       color: var(--muted);
     }
 
-    .contact {
-      text-align: center;
+    /* Video */
+
+    #video {
       background: #101b30;
+      text-align: center;
     }
 
-    .contact p {
-      color: var(--muted);
+    .video-container {
+      max-width: 800px;
+      margin: auto;
+      background: var(--card);
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid #26354d;
     }
+
+    .video-container video {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* Footer */
 
     footer {
       padding: 22px;
@@ -176,16 +231,10 @@
       border-top: 1px solid #26354d;
     }
 
-    .menu-btn {
-      display: none;
-      background: none;
-      color: white;
-      border: 0;
-      font-size: 26px;
-      cursor: pointer;
-    }
+    /* Responsive */
 
     @media (max-width: 650px) {
+
       header {
         padding: 12px 5%;
       }
@@ -212,151 +261,219 @@
 
       .hero {
         padding: 70px 6%;
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .hero p {
+        margin: auto;
       }
 
       section {
         padding: 60px 6%;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">Eyad.</div>
+  <!-- Header -->
 
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
-    ☰
-  </button>
+  <header>
 
-  <nav id="nav">
-    <a href="#home" onclick="closeMenu()">Home</a>
-    <a href="#about" onclick="closeMenu()">About Me</a>
-    <a href="#skills" onclick="closeMenu()">Skills</a>
-    <a href="#projects" onclick="closeMenu()">Projects</a>
-    <a href="#contact" onclick="closeMenu()">Contact</a>
-  </nav>
-</header>
+    <div class="logo">Eyad.</div>
 
-<main>
+    <button class="menu-btn"
+      onclick="toggleMenu()"
+      aria-label="Open menu">
+      ☰
+    </button>
 
-  <!-- Home Section -->
-  <section class="hero" id="home">
-    <small>WELCOME TO MY PERSONAL WEBSITE</small>
+    <nav id="nav">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About Me</a>
+      <a href="#skills" onclick="closeMenu()">Skills</a>
+      <a href="#projects" onclick="closeMenu()">Projects</a>
+      <a href="#video" onclick="closeMenu()">My Video</a>
+    </nav>
 
-    <h1>I'm <span>Eyad Hossam Hosny</span></h1>
+  </header>
+
+  <main>
+
+    <!-- Home Section -->
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <small>WELCOME TO MY PERSONAL WEBSITE</small>
+
+        <h1>
+          I'm <span>Eyad Hossam Hosny</span>
+        </h1>
+
+        <p>
+          I am a First-Year General Student,
+          interested in programming, web development,
+          and cybersecurity.
+
+          I am passionate about learning new technologies
+          and building creative projects.
+        </p>
+
+        <a href="#projects" class="btn">
+          View My Projects
+        </a>
+
+      </div>
+
+      <img
+        src="https://raw.githubusercontent.com/Yousef-qweasd/helk/refs/heads/main/x.jpe"
+        class="hero-image"
+        alt="Eyad Hossam Hosny">
+
+    </section>
+
+    <!-- About Section -->
+
+    <section id="about">
+
+      <h2 class="section-title">
+        About <span>Me</span>
+      </h2>
+
+      <div class="about">
+
+        <p>
+          My name is Eyad Hossam Hosny.
+
+          I am a First-Year General Student.
+
+          I am interested in Computer Science,
+          Programming, Web Development, and Cybersecurity.
+
+          I always seek to improve my skills
+          and learn new technologies.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- Skills Section -->
+
+    <section id="skills">
+
+      <h2 class="section-title">
+        My <span>Skills & Interests</span>
+      </h2>
+
+      <div class="skills">
+
+        <div class="card">
+          <h3>HTML</h3>
+          <p>Creating web pages and website structures.</p>
+        </div>
+
+        <div class="card">
+          <h3>CSS</h3>
+          <p>Designing and styling modern websites.</p>
+        </div>
+
+        <div class="card">
+          <h3>JavaScript</h3>
+          <p>Adding interaction and animations to websites.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity</h3>
+          <p>Learning about information security and system protection.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Projects Section -->
+
+    <section id="projects">
+
+      <h2 class="section-title">
+        My <span>Projects</span>
+      </h2>
+
+      <div class="projects">
+
+        <div class="card">
+          <h3>Personal Website</h3>
+          <p>My personal website to introduce myself and my interests.</p>
+        </div>
+
+        <div class="card">
+          <h3>Web Design</h3>
+          <p>Creative projects for designing modern web pages.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity</h3>
+          <p>Educational projects related to information security.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Video Section -->
+
+    <section id="video">
+
+      <h2 class="section-title">
+        My <span>Video</span>
+      </h2>
+
+      <div class="video-container">
+
+        <video controls>
+          <source src="https://raw.githubusercontent.com/Yousef-qweasd/helk/refs/heads/main/v.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+
+  <footer>
 
     <p>
-      I am a First-Year General Student,
-      interested in programming, web development,
-      and cybersecurity.
-      I am passionate about learning new technologies
-      and building creative projects.
+      © 2026 Eyad Hossam Hosny. All Rights Reserved.
     </p>
 
-    <a href="#projects" class="btn">View My Projects</a>
-  </section>
+  </footer>
 
-  <!-- About Section -->
-    
-  <section id="about">
-    <h2 class="section-title">About <span>Me</span></h2>
+  <script>
 
-    <div class="about">
-      <p>
-        My name is Eyad Hossam Hosny.
-        I am a First-Year General Student.
-        I am interested in Computer Science,
-        Programming, Web Development, and Cybersecurity.
-        I always seek to improve my skills
-        and learn new technologies.
-      </p>
-    </div>
-  </section>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("show");
+    }
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2 class="section-title">My <span>Skills & Interests</span></h2>
+    function closeMenu() {
+      document.getElementById("nav").classList.remove("show");
+    }
 
-    <div class="skills">
-
-      <div class="card">
-        <h3>HTML</h3>
-        <p>Creating web pages and website structures.</p>
-      </div>
-
-      <div class="card">
-        <h3>CSS</h3>
-        <p>Designing and styling modern websites.</p>
-      </div>
-
-      <div class="card">
-        <h3>JavaScript</h3>
-        <p>Adding interaction and animations to websites.</p>
-      </div>
-
-      <div class="card">
-        <h3>Cybersecurity</h3>
-        <p>Learning about information security and system protection.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2 class="section-title">My <span>Projects</span></h2>
-
-    <div class="projects">
-
-      <div class="card">
-        <h3>Personal Website</h3>
-        <p>My personal website to introduce myself and my interests.</p>
-      </div>
-
-      <div class="card">
-        <h3>Web Design</h3>
-        <p>Creative projects for designing modern web pages.</p>
-      </div>
-
-      <div class="card">
-        <h3>Cybersecurity</h3>
-        <p>Educational projects related to information security.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2 class="section-title">Contact <span>Me</span></h2>
-
-    <p>
-      Feel free to contact me for ideas,
-      collaboration, or future projects.
-    </p>
-
-    <a class="btn" href="mailto:your-email@example.com">
-      Send Me an Email
-    </a>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2026 Eyad Hossam Hosny. All Rights Reserved.</p>
-</footer>
-
-<script>
-  function toggleMenu() {
-    document.getElementById("nav").classList.toggle("show");
-  }
-
-  function closeMenu() {
-    document.getElementById("nav").classList.remove("show");
-  }
-</script>
+  </script>
 
 </body>
 </html>
+```
