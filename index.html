@@ -1,80 +1,362 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Portfolio of Eyad Hossam Hosny">
+  <title>Eyad Hossam Hosny | Personal Website</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1120;
+      color: #f1f5f9;
+      line-height: 1.8;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-        }
+    :root {
+      --main: #38bdf8;
+      --dark: #0b1120;
+      --card: #162238;
+      --muted: #a8b4c7;
+    }
 
-        img, video {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,17,32,.95);
+      border-bottom: 1px solid #26354d;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        h2 {
-            color: #333;
-        }
-    </style>
+    .logo {
+      color: var(--main);
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--main);
+    }
+
+    .hero {
+      min-height: 85vh;
+      padding: 90px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background:
+        radial-gradient(circle at 15% 30%, #12385a 0, transparent 40%),
+        var(--dark);
+    }
+
+    .hero small {
+      color: var(--main);
+      font-size: 17px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 65px);
+      margin: 15px 0;
+    }
+
+    .hero h1 span {
+      color: var(--main);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--main);
+      color: #07111f;
+      padding: 12px 28px;
+      margin-top: 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #7dd3fc;
+    }
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .section-title span {
+      color: var(--main);
+    }
+
+    .about {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border: 1px solid #26354d;
+      border-radius: 14px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--main);
+    }
+
+    .card h3 {
+      color: var(--main);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .contact {
+      text-align: center;
+      background: #101b30;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid #26354d;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding: 12px 5%;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 100%;
+        background: #101b30;
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .hero {
+        padding: 70px 6%;
+      }
+
+      section {
+        padding: 60px 6%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <h1 id="name"></h1>
-        <p>Welcome to My Personal Portfolio</p>
-    </header>
+<header>
+  <div class="logo">Eyad.</div>
 
-    <div class="container">
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+    ☰
+  </button>
 
-        <h2>About Me</h2>
-        <p id="description"></p>
+  <nav id="nav">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About Me</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
+    <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </nav>
+</header>
 
-        <h2>My Photo</h2>
-        <img src="https://raw.githubusercontent.com/Yousef-qweasd/helk/refs/heads/main/x.jpe" alt="Personal Photo">
+<main>
 
-        <h2>My Video</h2>
-        <video controls>
-            <source src="https://raw.githubusercontent.com/Yousef-qweasd/helk/refs/heads/main/xv.mp4" type="video/mp4">
-        </video>
+  <!-- Home Section -->
+  <section class="hero" id="home">
+    <small>WELCOME TO MY PERSONAL WEBSITE</small>
 
-        <h2>My Skills</h2>
-        <p>Creativity, Communication, Problem Solving, and Teamwork.</p>
+    <h1>I'm <span>Eyad Hossam Hosny</span></h1>
+
+    <p>
+      I am a First-Year General Student,
+      interested in programming, web development,
+      and cybersecurity.
+      I am passionate about learning new technologies
+      and building creative projects.
+    </p>
+
+    <a href="#projects" class="btn">View My Projects</a>
+  </section>
+
+  <!-- About Section -->
+    
+  <section id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about">
+      <p>
+        My name is Eyad Hossam Hosny.
+        I am a First-Year General Student.
+        I am interested in Computer Science,
+        Programming, Web Development, and Cybersecurity.
+        I always seek to improve my skills
+        and learn new technologies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title">My <span>Skills & Interests</span></h2>
+
+    <div class="skills">
+
+      <div class="card">
+        <h3>HTML</h3>
+        <p>Creating web pages and website structures.</p>
+      </div>
+
+      <div class="card">
+        <h3>CSS</h3>
+        <p>Designing and styling modern websites.</p>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript</h3>
+        <p>Adding interaction and animations to websites.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cybersecurity</h3>
+        <p>Learning about information security and system protection.</p>
+      </div>
 
     </div>
+  </section>
 
-    <script>
-        // Change personal information here
-        const personName = "Eyad Hossam Hosny";
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
 
-        const description =
-            "Hello! I am a passionate and creative person who loves learning new things, developing skills, and exploring new opportunities. I always try to improve myself and achieve my goals.";
+    <div class="projects">
 
-        document.getElementById("name").textContent = personName;
-        document.getElementById("description").textContent = description;
-    </script>
+      <div class="card">
+        <h3>Personal Website</h3>
+        <p>My personal website to introduce myself and my interests.</p>
+      </div>
+
+      <div class="card">
+        <h3>Web Design</h3>
+        <p>Creative projects for designing modern web pages.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cybersecurity</h3>
+        <p>Educational projects related to information security.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <p>
+      Feel free to contact me for ideas,
+      collaboration, or future projects.
+    </p>
+
+    <a class="btn" href="mailto:your-email@example.com">
+      Send Me an Email
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Eyad Hossam Hosny. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("nav").classList.toggle("show");
+  }
+
+  function closeMenu() {
+    document.getElementById("nav").classList.remove("show");
+  }
+</script>
 
 </body>
 </html>
